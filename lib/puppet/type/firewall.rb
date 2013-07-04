@@ -115,11 +115,11 @@ Puppet::Type.newtype(:firewall) do
   end
 
   # Source IP range
-  newproperty(:siprange) do
+  newproperty(:srcrange) do
     desc <<-EOS
       The source IP range. For example:
 
-          siprange => '192.168.1.1-192.168.1.10'
+          srcrange => '192.168.1.1-192.168.1.10'
     EOS
 
     newvalues(/^((25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)-((25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)/)
@@ -144,11 +144,11 @@ Puppet::Type.newtype(:firewall) do
   end
 
   # Destination IP range
-  newproperty(:diprange) do
+  newproperty(:dstrange) do
     desc <<-EOS
       The destination IP range. For example:
 
-          diprange => '192.168.1.1-192.168.1.10'
+          dstrange => '192.168.1.1-192.168.1.10'
     EOS
 
     newvalues(/^((25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)-((25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)/)
