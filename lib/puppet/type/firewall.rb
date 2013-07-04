@@ -114,6 +114,17 @@ Puppet::Type.newtype(:firewall) do
     end
   end
 
+  # Source IP range
+  newproperty(:siprange) do
+    desc <<-EOS
+      The source IP range. For example:
+
+          siprange => '192.168.1.1-192.168.1.10'
+    EOS
+
+    newvalues(/^((25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)-((25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)/)
+  end
+
   newproperty(:destination) do
     desc <<-EOS
       The destination address to match. For example:
@@ -130,6 +141,17 @@ Puppet::Type.newtype(:firewall) do
         self.fail("host_to_ip failed for #{value}, exception #{e}")
       end
     end
+  end
+
+  # Destination IP range
+  newproperty(:diprange) do
+    desc <<-EOS
+      The destination IP range. For example:
+
+          diprange => '192.168.1.1-192.168.1.10'
+    EOS
+
+    newvalues(/^((25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)-((25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)/)
   end
 
   newproperty(:sport, :array_matching => :all) do
