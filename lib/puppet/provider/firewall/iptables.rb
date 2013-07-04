@@ -71,6 +71,8 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
     :uid => "-m owner --uid-owner",
     :pkttype => "-m pkttype --pkt-type",
     :isfragment => "-f",
+    :srcrange => "-m iprange --src-range",
+    :dstrange => "-m iprange --dst-range",
   }
 
   # Create property methods dynamically
@@ -92,7 +94,7 @@ Puppet::Type.type(:firewall).provide :iptables, :parent => Puppet::Provider::Fir
     :proto, :isfragment, :tcp_flags, :gid, :uid, :sport, :dport, :port,
     :dst_type, :src_type, :socket, :pkttype, :name, :state, :icmp,
     :limit, :burst, :jump, :todest, :tosource, :toports, :log_prefix,
-    :log_level, :reject, :set_mark]
+    :log_level, :reject, :set_mark, :srcrange, :dstrange]
 
   def insert
     debug 'Inserting rule %s' % resource[:name]
